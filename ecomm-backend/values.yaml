@@ -1,0 +1,39 @@
+replicaCount: 2
+image:
+  repository: gcr.io/devops-docker-491007/ecommerce-backend
+  pullPolicy: IfNotPresent
+  tag: ' '
+imagePullSecrets: []
+nameOverride: ''
+fullnameOverride: ''
+serviceAccount:
+  create: true
+  automount: true
+  annotations: {}
+  name: ecomm-backend
+podAnnotations: {}
+podLabels: {}
+podSecurityContext: {}
+securityContext: {}
+service:
+  type: ClusterIP
+  port: 80
+resources:
+  limits:
+    cpu: 500m
+    memory: 1Gi
+  requests:
+    cpu: 500m
+    memory: 1Gi
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+volumes: []
+volumeMounts: []
+nodeSelector: {}
+tolerations: []
+affinity: {}
+httpRoute:
+  enabled: false
